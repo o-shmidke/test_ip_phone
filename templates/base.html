@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apache</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+<div>
+    <div>
+        <p>service_name = {{name}}</p>
+        <p>service_state = {{status}}</p>
+        <form action="{% url 'control_service' %}" method="post" novalidate="novalidate" id="form_control"> {% csrf_token %}
+                <p> enable service: <input type="checkbox" name="perm" required="" id="id_perm" {% if perm == 'True' %}
+                    checked='' {% endif %} ></p>
+            <button type="submit" value="start" name="btn">start</button>
+            <button type="submit" value="stop" name="btn">stop</button>
+            <button type="submit" value="reboot" name="btn">reboot</button>
+            <p>{{ error }}</p>
+        </form>
+    </div>
+
+</div>
+</body>
+<script src="/static/js/control_perm.js "></script>
+</html>
